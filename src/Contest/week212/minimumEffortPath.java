@@ -1,27 +1,45 @@
 package Contest.week212;
 
+import java.util.Arrays;
+
 public class minimumEffortPath {
 
+    int m, n;
+    int[][] h;
+    boolean[][] visited;
+    int[][] dirs = {{-1,0},{1,0},{0,-1},{0,1}};
     public int minimumEffortPath(int[][] heights) {
-        int rows = heights.length;
-        int cols = heights[0].length;
-        int[][] dp = new int[rows-1][cols-1];
-        for(int i=rows+cols-1; i>=0; i--){
-            for(int j=rows; j>=i-rows; j--){
-                int x = j;
-                int y = i-j;
-                if(x == rows){
-                    dp[x][y] = Math.max(dp[x][y+1], Math.abs(heights[x][y]-heights[x][y+1]));
-                }
-                if(y == cols){
-                    dp[x][y] = Math.max(dp[x+1][y], Math.abs(heights[x][y]-heights[x+1][y]));
-                }
-                dp[x][y] = Math.min(dp[x+1][y], dp[x][y+1]);
-                dp[x][y] = Math.max(Math.abs(heights[x][y]-heights[x+1][y]), dp[x][y]);
-                dp[x][y] = Math.max(Math.abs(heights[x][y]-heights[x][y+1]), dp[x][y]);
+        m = heights.length;
+        n = heights[0].length;
+        visited = new boolean[m][n];
+        this.h = heights;
+        int l = 0;
+        int r = (int)1e6;
+        while(l<r){
+            int mid = (l+r)/2;
+            for(int i=0; i<m; i++){
+                Arrays.fill(visited[i], false);
+            }
+            dfs(0, 0, heights[0][0],mid);
+            if(visited[m-1][n-1]){
+                r = mid;
+            }else{
+                l = mid+1;
             }
         }
-        return dp[0][0];
+        return l;
+    }
+
+    public void dfs(int i, int j, int src,int t){
+        if(i<0 || j<0 || i>=m || j>=n || visited[i][j] || Math.abs(h[i][j]-src)>t){
+            return;
+        }
+        visited[i][j] = true;
+        for(int[] dir : dirs){
+            int x = i+dir[0];
+            int y = j+dir[1];
+            dfs(x, y, h[i][j], t);
+        }
     }
 
 }
