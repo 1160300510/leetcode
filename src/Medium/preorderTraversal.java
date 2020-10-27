@@ -24,13 +24,4 @@ public class preorderTraversal {
         }
         return ans;
     }
-
-    public void traversal(TreeNode root){
-        if(root == null){
-            return;
-        }
-        ans.add(root.val);
-        traversal(root.left);
-        traversal(root.right);
-    }
 }
