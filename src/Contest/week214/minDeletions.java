@@ -27,7 +27,6 @@ public class minDeletions {
                 for(int j=cnt[i]-1; j>=0; j--){
                     if(flag[j]==false){
                         ans += cnt[i] - j;
-                        System.out.println(j);
                         cnt[i] = j;
                         set.add(j);
                         if (j != 0){
