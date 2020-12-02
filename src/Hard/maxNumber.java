@@ -78,4 +78,23 @@ public class maxNumber {
         }
         return ans;
     }
+
+    public int[] maxSequence2(int[] nums, int k){
+        int[] stack = new int[k];
+        int top = -1;
+        int n = nums.length;
+        int remain = n-k;//栈最多pop remain次
+        for(int i=0; i<nums.length; i++){
+            while (top>=0 && nums[i]>stack[top] && remain>0){
+                top--;
+                remain--;
+            }
+            if(top < k-1){
+                stack[++top] = nums[i];
+            }else{
+                remain--;
+            }
+        }
+        return stack;
+    }
 }
