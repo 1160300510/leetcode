@@ -7,11 +7,7 @@ public class matrixScore {
         for(int i=0; i<m; i++){
             if(A[i][0] == 0){
                 for(int j=0; j<n; j++){
-                    if(A[i][j] == 1){
-                        A[i][j] = 0;
-                    }else{
-                        A[i][j] = 1;
-                    }
+                    A[i][j] = A[i][j] ^ 1;
                 }
             }
         }
@@ -24,11 +20,7 @@ public class matrixScore {
             }
             if(cnt > (m-cnt)){
                 for(int i=0; i<m; i++){
-                    if(A[i][j] == 1){
-                        A[i][j] = 0;
-                    }else{
-                        A[i][j] = 1;
-                    }
+                    A[i][j] = A[i][j] ^ 1;
                 }
             }
         }
