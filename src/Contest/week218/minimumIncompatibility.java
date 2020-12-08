@@ -6,6 +6,7 @@ import java.util.Map;
 public class minimumIncompatibility {
     public int minimumIncompatibility(int[] nums, int k) {
         int n = nums.length;
+        // n==k时, 最小兼容性一定是0
         if(n == k){
             return 0;
         }
