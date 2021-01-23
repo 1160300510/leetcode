@@ -1,5 +1,7 @@
 package DataStructure;
 
+import java.util.Arrays;
+
 public class DSU {
     int[] p;
     int[] rank;
