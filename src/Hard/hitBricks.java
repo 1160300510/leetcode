@@ -113,4 +113,8 @@ class DSU {
         a = find(a);
         return size[a];
     }
+
+    public boolean connected(int a, int b){
+        return find(a) == find(b);
+    }
 }
