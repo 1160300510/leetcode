@@ -9,8 +9,8 @@ public class maxPathSum {
         return maxsum;
     }
 
-    public int postorder(TreeNode root){
-        if(root == null){
+    public int postorder(TreeNode root) {
+        if (root == null) {
             return 0;
         }
         // 获取左右子树的最大收益
@@ -18,9 +18,8 @@ public class maxPathSum {
         int leftGain = Math.max(0, postorder(root.left));
         int rightGain = Math.max(0, postorder(root.right));
         //计算以该节点为根的子树的最大路径和
-        maxsum = Math.max(maxsum, leftGain+rightGain+root.val);
+        maxsum = Math.max(maxsum, leftGain + rightGain + root.val);
         //向上传递最大收益，只能选择一侧
-        return root.val+Math.max(leftGain, rightGain);
+        return root.val + Math.max(leftGain, rightGain);
     }
-
 }
