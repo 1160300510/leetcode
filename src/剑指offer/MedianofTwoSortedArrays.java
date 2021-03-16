@@ -32,7 +32,7 @@ public class MedianofTwoSortedArrays {
             int newIndex2 = Math.min(len2, index2+pivot)-1;
             int a = nums1[newIndex1];
             int b = nums2[newIndex2];
-            if(nums1[a] <= nums2[b]){
+            if(a <= b){
                 k -= (newIndex1-index1+1);
                 index1 = newIndex1+1;
             }else{
