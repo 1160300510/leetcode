@@ -1,9 +1,7 @@
 package Medium;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ValidSudoku {
     public boolean isValidSudoku(char[][] board) {
@@ -43,4 +41,5 @@ public class ValidSudoku {
         }
         return true;
     }
+
 }
