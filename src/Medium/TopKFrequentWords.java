@@ -19,13 +19,9 @@ public class TopKFrequentWords {
             }
         });
         for(Map.Entry<String, Integer> entry : map.entrySet()){
-            if(pq.size() < k){
-                pq.offer(entry);
-            }else{
-                if(pq.peek().getValue()<entry.getValue() || (pq.peek().getValue().equals(entry.getValue())&&pq.peek().getKey().compareTo(entry.getKey())>0)){
-                    pq.poll();
-                    pq.offer(entry);
-                }
+            pq.offer(entry);
+            if(pq.size() > k){
+                pq.poll();
             }
         }
         List<String> ans = new LinkedList<>();
